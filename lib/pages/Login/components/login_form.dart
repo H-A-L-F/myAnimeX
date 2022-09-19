@@ -11,7 +11,6 @@ class LoginForm extends StatelessWidget {
     return Form(
       child: Column(
         children: [
-          
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
