@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myanimex/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -12,6 +13,13 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+
+  saveUser(String email) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('email', email);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +34,7 @@ class _LoginFormState extends State<LoginForm> {
               }
               return null;
             },
+            controller: emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: colPrimaryBase,
@@ -55,6 +64,7 @@ class _LoginFormState extends State<LoginForm> {
                 }
                 return null;
               },
+              controller: passController,
               textInputAction: TextInputAction.done,
               obscureText: true,
               cursorColor: colPrimaryBase,
@@ -74,7 +84,7 @@ class _LoginFormState extends State<LoginForm> {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 // on success
-
+                saveUser(emailController.text);
               }
             },
             child: Text(
