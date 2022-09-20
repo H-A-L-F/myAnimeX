@@ -3,9 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:myanimex/constants.dart';
 import 'package:myanimex/route_generator.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+SharedPreferences? prefs;
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((value) => runApp(MyApp()));
 }

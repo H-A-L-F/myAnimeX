@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myanimex/main.dart';
+import 'package:myanimex/pages/Home/home_page.dart';
 import 'package:myanimex/pages/Login/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -8,6 +11,18 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => const LoginPage());
+      case '/home':
+        String? email = prefs!.getString('email');
+        if (email != null && email != '') {
+          if (args is String) {
+            return MaterialPageRoute(
+              builder: (context) => HomePage(
+                email: args,
+              ),
+            );
+          }
+        }
+        return _errorRoute();
       default:
         return _errorRoute();
     }

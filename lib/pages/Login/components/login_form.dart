@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myanimex/constants.dart';
+import 'package:myanimex/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginForm extends StatefulWidget {
@@ -17,8 +18,7 @@ class _LoginFormState extends State<LoginForm> {
   TextEditingController passController = TextEditingController();
 
   saveUser(String email) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('email', email);
+    prefs!.setString('email', email);
   }
 
   @override
@@ -85,6 +85,10 @@ class _LoginFormState extends State<LoginForm> {
               if (_formKey.currentState!.validate()) {
                 // on success
                 saveUser(emailController.text);
+                Navigator.of(context).pushNamed(
+                  '/home',
+                  arguments: emailController.text,
+                );
               }
             },
             child: Text(
