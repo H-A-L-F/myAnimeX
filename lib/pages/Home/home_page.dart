@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:myanimex/main.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:myanimex/pages/Home/components/carousel.dart';
 
 class HomePage extends StatefulWidget {
   final String email;
@@ -44,7 +45,12 @@ class _HomePageState extends State<HomePage> {
         title: Text(widget.email),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: Column(
+          children: [
+            const Carousel(),
+            _widgetOptions.elementAt(_selectedIndex),
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
