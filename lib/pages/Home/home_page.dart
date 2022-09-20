@@ -4,7 +4,18 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:myanimex/main.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:myanimex/pages/About/about_page.dart';
 import 'package:myanimex/pages/Home/components/carousel.dart';
+import 'package:myanimex/pages/Home/components/real_home.dart';
+import 'package:myanimex/pages/Items/items_page.dart';
+import 'package:myanimex/pages/Profile/profile_page.dart';
+
+final List<Widget> pages = [
+  RealHome(),
+  AboutPage(),
+  ProfilePage(),
+  ItemsPage()
+];
 
 class HomePage extends StatefulWidget {
   final String email;
@@ -45,12 +56,7 @@ class _HomePageState extends State<HomePage> {
         title: Text(widget.email),
       ),
       body: Center(
-        child: Column(
-          children: [
-            const Carousel(),
-            _widgetOptions.elementAt(_selectedIndex),
-          ],
-        ),
+        child: pages[_selectedIndex],
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(

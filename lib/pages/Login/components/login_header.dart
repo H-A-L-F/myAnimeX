@@ -17,7 +17,22 @@ class LoginHeader extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        Image.asset("assets/login.png"),
+        const SizedBox(
+          height: 20,
+        ),
+        Row(
+          children: [
+            const Spacer(),
+            Expanded(
+              flex: 8,
+              child: Image.asset("assets/cmanLogo.png"),
+            ),
+            const Spacer(),
+          ],
+        ),
+        const SizedBox(
+          height: 20,
+        ),
       ],
     );
   }
