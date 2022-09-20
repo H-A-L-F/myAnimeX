@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   static const List<Widget> pages = [
     RealHome(),
     ItemsPage(),
-    ProfilePage(),
+    // ProfilePage(),
   ];
   static const List<GButton> menus = [
     GButton(
@@ -43,10 +43,10 @@ class _HomePageState extends State<HomePage> {
       icon: LineIcons.bookOpen,
       text: 'Items',
     ),
-    GButton(
-      icon: LineIcons.user,
-      text: 'Profile',
-    ),
+    // GButton(
+    //   icon: LineIcons.user,
+    //   text: 'Profile',
+    // ),
   ];
   final CustomPopupMenuController _controller = CustomPopupMenuController();
   late List<ItemModel> menuItems;

@@ -49,8 +49,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       dark: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red)
-            .copyWith(secondary: Colors.amber, brightness: Brightness.dark),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+            .copyWith(secondary: Colors.blue[900], brightness: Brightness.dark),
         scaffoldBackgroundColor: Colors.white,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
