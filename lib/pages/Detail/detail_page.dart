@@ -28,11 +28,7 @@ class _DetailPageState extends State<DetailPage> {
     return BlocProvider(
       lazy: false,
       create: (context) => CommentBloc()..add(LoadComment()),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        color: Colors.transparent,
-        home: DetailPageTab(currMerch: widget.currMerch),
-      ),
+      child: DetailPageTab(currMerch: widget.currMerch),
     );
   }
 }
@@ -69,7 +65,7 @@ class _DetailPageTabState extends State<DetailPageTab> {
   Widget build(BuildContext context) {
     return TabContainer(
       radius: 20,
-      tabEdge: TabEdge.left,
+      tabEdge: TabEdge.top,
       tabCurve: Curves.easeIn,
       transitionBuilder: (child, animation) {
         animation = CurvedAnimation(curve: Curves.easeIn, parent: animation);
@@ -99,75 +95,78 @@ class _DetailPageTabState extends State<DetailPageTab> {
           value: BlocProvider.of<CommentBloc>(context),
           child: Scaffold(
             backgroundColor: Colors.transparent,
-            body: Column(
-              children: [
-                ItemDisplay(merch: widget.currMerch),
-                const SizedBox(height: defPad),
-                Container(
-                  decoration: BoxDecoration(),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        const Text(
-                          'Comment',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.none,
-                            color: colPrimaryDark,
-                          ),
-                        ),
-                        const SizedBox(height: defPad),
-                        TextFormField(
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Can\'t enter empty comment'),
-                                ),
-                              );
-                            }
-                            return null;
-                          },
-                          controller: _commentController,
-                          keyboardType: TextInputType.name,
-                          textInputAction: TextInputAction.next,
-                          cursorColor: colPrimaryBase,
-                          style: const TextStyle(color: Colors.white),
-                          decoration: const InputDecoration(
-                            hintText: "Comment...",
-                            hintStyle: TextStyle(color: Colors.white),
-                            prefixIcon: Padding(
-                              padding: EdgeInsets.all(defPad),
-                              child: Icon(Icons.chat),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  ItemDisplay(merch: widget.currMerch),
+                  const SizedBox(height: defPad),
+                  Container(
+                    decoration: BoxDecoration(),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Comment',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.none,
+                              color: colPrimaryDark,
                             ),
                           ),
-                        ),
-                        const SizedBox(height: defPad),
-                        ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              // on success
-                              context.read<CommentBloc>().add(
-                                    AddComment(
-                                      Comment(
-                                        sender: _uname,
-                                        content: _commentController.text,
-                                      ),
-                                    ),
-                                  );
-                            }
-                          },
-                          child: Text(
-                            "Submit".toUpperCase(),
+                          const SizedBox(height: defPad),
+                          TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Can\'t enter empty comment'),
+                                  ),
+                                );
+                              }
+                              return null;
+                            },
+                            controller: _commentController,
+                            keyboardType: TextInputType.name,
+                            textInputAction: TextInputAction.next,
+                            cursorColor: colPrimaryBase,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                              hintText: "Comment...",
+                              hintStyle: TextStyle(color: Colors.white),
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.all(defPad),
+                                child: Icon(Icons.chat),
+                              ),
+                            ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: defPad),
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                // on success
+                                context.read<CommentBloc>().add(
+                                      AddComment(
+                                        Comment(
+                                          sender: _uname,
+                                          content: _commentController.text,
+                                        ),
+                                      ),
+                                    );
+                                    _commentController.text = '';
+                              }
+                            },
+                            child: Text(
+                              "Submit".toUpperCase(),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -190,7 +189,7 @@ class _DetailPageTabState extends State<DetailPageTab> {
                           for (int i = 0; i < state.comments.length; i++)
                             Container(
                               margin: const EdgeInsets.symmetric(
-                                  horizontal: defPad),
+                                  horizontal: defPad, vertical: defPad),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: defPad, vertical: defPad),
                               width: double.infinity,
@@ -226,7 +225,6 @@ class _DetailPageTabState extends State<DetailPageTab> {
                                 ],
                               ),
                             ),
-                          const SizedBox(height: defPad),
                         ],
                       );
                     } else {
