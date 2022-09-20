@@ -10,13 +10,6 @@ import 'package:myanimex/pages/Home/components/real_home.dart';
 import 'package:myanimex/pages/Items/items_page.dart';
 import 'package:myanimex/pages/Profile/profile_page.dart';
 
-final List<Widget> pages = [
-  RealHome(),
-  AboutPage(),
-  ProfilePage(),
-  ItemsPage()
-];
-
 class HomePage extends StatefulWidget {
   final String email;
   const HomePage({super.key, required this.email});
@@ -27,24 +20,23 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home',
-      style: optionStyle,
+  static const List<Widget> pages = [
+    RealHome(),
+    ItemsPage(),
+    ProfilePage(),
+  ];
+  static const List<GButton> menus = [
+    GButton(
+      icon: LineIcons.home,
+      text: 'Home',
     ),
-    Text(
-      'Likes',
-      style: optionStyle,
+    GButton(
+      icon: LineIcons.bookOpen,
+      text: 'Search',
     ),
-    Text(
-      'Search',
-      style: optionStyle,
-    ),
-    Text(
-      'Profile',
-      style: optionStyle,
+    GButton(
+      icon: LineIcons.user,
+      text: 'Profile',
     ),
   ];
 
@@ -81,24 +73,7 @@ class _HomePageState extends State<HomePage> {
               duration: const Duration(milliseconds: 400),
               tabBackgroundColor: Colors.grey[100]!,
               color: Colors.black,
-              tabs: const [
-                GButton(
-                  icon: LineIcons.home,
-                  text: 'Home',
-                ),
-                GButton(
-                  icon: LineIcons.heart,
-                  text: 'Likes',
-                ),
-                GButton(
-                  icon: LineIcons.search,
-                  text: 'Search',
-                ),
-                GButton(
-                  icon: LineIcons.user,
-                  text: 'Profile',
-                ),
-              ],
+              tabs: menus,
               selectedIndex: _selectedIndex,
               onTabChange: (index) {
                 setState(() {
