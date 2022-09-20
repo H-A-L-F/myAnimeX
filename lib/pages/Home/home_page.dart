@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     ),
     GButton(
       icon: LineIcons.bookOpen,
-      text: 'Items~',
+      text: 'Items',
     ),
     GButton(
       icon: LineIcons.user,

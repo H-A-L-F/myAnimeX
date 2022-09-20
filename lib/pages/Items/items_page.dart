@@ -37,7 +37,12 @@ class ItemsPage extends StatelessWidget {
             .map(
               (item) => GestureDetector(
                 behavior: HitTestBehavior.translucent,
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    '/detail',
+                    arguments: item,
+                  );
+                },
                 child: Container(
                   margin: const EdgeInsets.all(defPad),
                   padding: const EdgeInsets.all(14),

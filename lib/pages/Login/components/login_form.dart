@@ -35,13 +35,13 @@ class _LoginFormState extends State<LoginForm> {
               return null;
             },
             controller: emailController,
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.name,
             textInputAction: TextInputAction.next,
             cursorColor: colPrimaryBase,
             onSaved: (email) {},
             style: const TextStyle(color: Colors.white),
             decoration: const InputDecoration(
-              hintText: "Your email",
+              hintText: "Your username",
               hintStyle: TextStyle(color: Colors.white),
               prefixIcon: Padding(
                 padding: EdgeInsets.all(defPad),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myanimex/main.dart';
+import 'package:myanimex/pages/Detail/detail_page.dart';
 import 'package:myanimex/pages/Home/home_page.dart';
+import 'package:myanimex/pages/Items/items_page.dart';
 import 'package:myanimex/pages/Login/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,6 +23,13 @@ class RouteGenerator {
               ),
             );
           }
+        }
+        return _errorRoute();
+      case '/detail':
+        if (args is Merch) {
+          return MaterialPageRoute(
+            builder: (context) => DetailPage(currMerch: args),
+          );
         }
         return _errorRoute();
       default:
