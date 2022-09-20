@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     ),
     GButton(
       icon: LineIcons.bookOpen,
-      text: 'Search',
+      text: 'Items~',
     ),
     GButton(
       icon: LineIcons.user,
@@ -88,6 +88,7 @@ class _HomePageState extends State<HomePage> {
                           (item) => GestureDetector(
                             behavior: HitTestBehavior.translucent,
                             onTap: () {
+                              item.onTap();
                               _controller.hideMenu();
                             },
                             child: Container(
