@@ -188,21 +188,22 @@ class _DetailPageTabState extends State<DetailPageTab> {
                       return Column(
                         children: [
                           for (int i = 0; i < state.comments.length; i++)
-                            Column(
-                              children: [
-                                Text(
-                                  state.comments[i].sender,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.none,
-                                    color: colPrimaryDark,
-                                  ),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(),
-                                  child: Text(
-                                    state.comments[i].content,
+                            Container(
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: defPad),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: defPad, vertical: defPad),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: colPrimaryContent,
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    state.comments[i].sender,
                                     style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -210,9 +211,22 @@ class _DetailPageTabState extends State<DetailPageTab> {
                                       color: colPrimaryDark,
                                     ),
                                   ),
-                                )
-                              ],
+                                  const SizedBox(height: defPad),
+                                  Container(
+                                    child: Text(
+                                      state.comments[i].content,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        decoration: TextDecoration.none,
+                                        color: colPrimaryDark,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
+                          const SizedBox(height: defPad),
                         ],
                       );
                     } else {

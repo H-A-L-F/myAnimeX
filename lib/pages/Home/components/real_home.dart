@@ -13,9 +13,7 @@ class RealHome extends StatelessWidget {
     return Column(
       children: [
         const Carousel(),
-        const SizedBox(
-          height: defPad,
-        ),
+        const SizedBox(height: defPad),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: defPad),
           width: double.infinity,
