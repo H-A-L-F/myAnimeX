@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:myanimex/main.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:myanimex/pages/About/about_page.dart';
 import 'package:myanimex/pages/Home/components/carousel.dart';
 import 'package:myanimex/pages/Home/components/real_home.dart';
 import 'package:myanimex/pages/Items/items_page.dart';

@@ -4,6 +4,7 @@ import 'package:myanimex/constants.dart';
 import 'package:myanimex/route_generator.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 SharedPreferences? prefs;
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
             minimumSize: const Size(double.infinity, 56),
           ),
         ),
+        textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
         inputDecorationTheme: const InputDecorationTheme(
           filled: true,
           fillColor: colPrimaryContent,
