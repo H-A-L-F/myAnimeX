@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:myanimex/constants.dart';
+import 'package:myanimex/pages/Detail/components/item_display.dart';
 
 class Merch {
   final String name;
@@ -50,54 +51,8 @@ class ItemsPage extends StatelessWidget {
                     color: colPrimaryBase,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        child: Image.asset(item.image,
-                            fit: BoxFit.fill, width: 1000.0),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: defPad),
-                        child: Text(
-                          item.name,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        item.desc,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          const Spacer(),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 8),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: colSecondaryBase),
-                            child: Text(
-                              item.price,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  child: ItemDisplay(
+                    merch: item,
                   ),
                 ),
               ),
