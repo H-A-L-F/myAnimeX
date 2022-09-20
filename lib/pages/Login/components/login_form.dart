@@ -14,7 +14,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
+  TextEditingController unameController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
   saveUser(String email) async {
@@ -34,7 +34,7 @@ class _LoginFormState extends State<LoginForm> {
               }
               return null;
             },
-            controller: emailController,
+            controller: unameController,
             keyboardType: TextInputType.name,
             textInputAction: TextInputAction.next,
             cursorColor: colPrimaryBase,
@@ -84,10 +84,10 @@ class _LoginFormState extends State<LoginForm> {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 // on success
-                saveUser(emailController.text);
+                saveUser(unameController.text);
                 Navigator.of(context).pushNamed(
                   '/home',
-                  arguments: emailController.text,
+                  arguments: unameController.text,
                 );
               }
             },
